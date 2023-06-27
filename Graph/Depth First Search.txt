@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<vector<int>>graph(40);
+vector<bool>vis(20);
+void dfs(int node){
+    vis[node] = true;
+    cout << node << " ";
+    for(auto child:graph[node]){
+        if(!vis[child]){
+            dfs(child);
+        }
+    }
+}
+int main()
+{
+   int n ; cin >> n;
+   for(int i=0;i<n;i++){
+      int a , b ; cin >> a >> b;
+      graph[a].push_back(b);
+      graph[b].push_back(a);
+   } 
+   dfs(1);
+}
